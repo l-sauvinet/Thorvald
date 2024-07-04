@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/app.css">
+    <link rel="stylesheet" href="./public/icon.css">
     <title>Assistium</title>
 </head>
 <body>
@@ -11,7 +12,7 @@
         <div class="logo">
             <img class="logo_assistium" src="./img/logo_assistium.png">
         </div>
-        <div class="title">Assistium</div>
+        <div class="title"><a href="#">Assistium</a></div>
         <div class="tab">
             <ul class="tab-list">
                 <li class="tab-list-projet">Projet</li>
@@ -25,9 +26,28 @@
             <img class="icon_account" src="./img/account.svg">
         </div>
     </div>
-    <div class="menu">
-        <div class="projects"></div>
-        <div class="filter"></div>
+    <div id="menu" class="menu show">
+        <div class="menu_content">
+            
+            <div class="filter">
+                <label for="state">État:</label>
+                <select id="state" name="state">
+                    <option value="a_faire">À faire</option>
+                    <option value="en_cours">En cours</option>
+                    <option value="termine">Terminé</option>
+                </select>
+
+                <label for="importance">Importance:</label>
+                <select id="importance" name="importance">
+                    <option value="basse">Basse</option>
+                    <option value="moyenne">Moyenne</option>
+                    <option value="haute">Haute</option>
+                </select>
+            </div>
+            <div class="search">
+            </div>
+        </div>
+        <button id="toggleMenuBtn" class="toggle_menu_btn" onclick="toggleMenu()"><img src="./img/arrow.svg" class="arrow"></button>
     </div>
     <div class="table">
         <div class="name"></div>

@@ -6,6 +6,11 @@
     background-color: rgb(46, 46, 46);
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .header{
     display: flex;
     align-items: center;
@@ -14,40 +19,6 @@
     color: white;
     border-top: 0.10px solid rgb(92, 92, 92);
     border-bottom: 2.5px solid rgb(92, 92, 92);
-}
-
-.logo{
-    height: 75px;
-    width: 75px;
-}
-
-.logo_assistium{
-    height: 75px;
-    width: 75px;
-}
-
-.settings{
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 125px;
-}
-
-.icon_settings{
-    height: 20px;
-    width: 20px;
-}
-
-.account{
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: 50px;
-}
-
-.icon_account{
-    height: 40px;
-    width: 40px;
 }
 
 .title{
@@ -94,4 +65,83 @@
 .tab-list-compte:hover{
     background-color: rgb(71, 71, 71);
     cursor: pointer;
+}
+
+.menu_content {
+    color: white;
+    position: fixed;
+    top: 96px;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: rgb(46, 46, 46);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: left 0.3s ease-in-out;
+    border: 2.5px solid rgb(92, 92, 92);
+}
+
+.menu .menu_content {
+    left: 0;
+}
+
+.menu .menu_content.closed {
+    left: -300px;
+}
+
+.filter {
+    margin-bottom: 20px;
+}
+
+.filter label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.filter select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#state{
+    background-color: white;
+}
+
+#importance{
+    background-color: white;
+}
+
+.option{
+    background-color: white;
+}
+
+.toggle_menu_btn {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    position: fixed;
+    top: 95px;
+    left: 300px;
+    font-size: 24px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.arrow{
+    height: 20px;
+    width: 20px; 
+}
+
+.toggle_menu_btn.rotate {
+    transform: rotate(180deg);
+    left: 10px;
 }
