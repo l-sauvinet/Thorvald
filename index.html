@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo_assistium.png" type="image/x-icon">
     <link rel="stylesheet" href="./public/app.css">
     <link rel="stylesheet" href="./public/icon.css">
     <title>Assistium</title>
@@ -30,29 +31,52 @@
         <div class="menu_content">
             
             <div class="filter">
+                <h4 class="more">Filtres:</h4>
                 <label for="state">État:</label>
                 <select id="state" name="state">
-                    <option value="a_faire">À faire</option>
-                    <option value="en_cours">En cours</option>
-                    <option value="termine">Terminé</option>
+                    <option class="option" value="a_faire">À faire</option>
+                    <option class="option" value="en_cours">En cours</option>
+                    <option class="option" value="termine">Terminé</option>
                 </select>
 
                 <label for="importance">Importance:</label>
                 <select id="importance" name="importance">
-                    <option value="basse">Basse</option>
-                    <option value="moyenne">Moyenne</option>
-                    <option value="haute">Haute</option>
+                    <option class="option" value="basse">Basse</option>
+                    <option class="option" value="moyenne">Moyenne</option>
+                    <option class="option" value="haute">Haute</option>
                 </select>
             </div>
+            <h4 class="more"></h4>Recherche:</h4>
             <div class="search">
+                <input type="text" id="searchInput" placeholder="Rechercher...">
+                <button id="searchBtn">Rechercher</button>
             </div>
         </div>
-        <button id="toggleMenuBtn" class="toggle_menu_btn" onclick="toggleMenu()"><img src="./img/arrow.svg" class="arrow"></button>
+        <div id="formContainer" class="form-container menu-open">
+            <input type="text" id="nameInput" placeholder="Nom">
+            <select id="priorityInput">
+                <option class="option" value="basse">Basse</option>
+                <option class="option" value="moyenne">Moyenne</option>
+                <option class="option" value="haute">Haute</option>
+            </select>
+            <button id="addRowBtn">Ajouter une tache</button>
+        </div>
     </div>
-    <div class="table">
-        <div class="name"></div>
-        <div class="status"></div>
-        <div class="priority"></div>
+</div>
+    <button id="toggleMenuBtn" class="toggle_menu_btn" onclick="toggleMenu()"><img src="./img/arrow.svg" class="arrow"></button>
+    </div>
+    <div class="table-container" id="tableContainer">
+        <table id="dataTable">
+            <thead>
+                <tr class="headerTable">
+                    <th class="headerTable">Nom</th>
+                    <th class="headerTable">État</th>
+                    <th class="headerTable">Importance</th>
+                    <th class="headerTable">Action</th>
+                </tr>
+            </thead>
+            <tbody class="line"></tbody>
+        </table>
     </div>
     <script src="public/index.js"></script>
 </body>
