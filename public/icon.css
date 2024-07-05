@@ -1,0 +1,68 @@
+.logo{
+    height: 75px;
+    width: 75px;
+}
+
+.logo_assistium{
+    height: 75px;
+    width: 75px;
+    background-color: #2e2e2e;
+}
+
+.settings{
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #2e2e2e;
+}
+
+.settings:hover{
+    background-color: rgb(71, 71, 71);
+    cursor: pointer;
+}
+
+.icon_settings{
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+}
+
+.account{
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #2e2e2e;
+}
+
+.account:hover{
+    background-color: rgb(71, 71, 71);
+    cursor: pointer;
+}
+
+.icon_account{
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+}
+
+.arrow {
+    background-color: #686868;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+}
+
+.toggle_menu_btn.rotate {
+    transform: rotate(180deg);
+    left: 20px;
+}
