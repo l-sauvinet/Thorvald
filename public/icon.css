@@ -66,3 +66,9 @@
     transform: rotate(180deg);
     left: 20px;
 }
+
+.delete-icon {
+    width: 20px; /* Ajustez la taille selon vos besoins */
+    height: 20px; /* Ajustez la taille selon vos besoins */
+ /* Définit le fond de l'icône comme transparent */
+}
