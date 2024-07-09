@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     loadTableData();
-    filterTable(); // Filtrer les données au chargement de la page
+    filterTable();
 });
 
 function saveTableData() {
@@ -49,7 +49,7 @@ function loadTableData() {
             case 'En_cours':
                 statusBadge.classList.add('status-en-cours');
                 break;
-            case 'Termine':
+            case 'Terminé':
                 statusBadge.classList.add('status-termine');
                 break;
             default:
@@ -59,7 +59,7 @@ function loadTableData() {
         statusContainer.appendChild(statusBadge);
 
         var statusSelect = document.createElement('select');
-        var statusOptions = ['A_faire', 'En_cours', 'Termine'];
+        var statusOptions = ['A_faire', 'En_cours', 'Terminé'];
         statusOptions.forEach(function(option) {
             var statusOption = document.createElement('option');
             statusOption.textContent = option.replace('_', ' ');
@@ -83,11 +83,12 @@ function loadTableData() {
 
         var deleteBtn = document.createElement('button');
         deleteBtn.className = 'deleteBtn';
-        deleteBtn.innerHTML = '<img class="delete-icon" src="./img/trash.svg" alt="Supprimer" />'; // Utilisation de l'image SVG pour la suppression avec une classe CSS
+        deleteBtn.innerHTML = '<img class="delete-icon" src="./img/trash.png" alt="Supprimer" />';
         deleteBtn.addEventListener('click', function() {
             var row = this.parentNode.parentNode;
             row.parentNode.removeChild(row);
             saveTableData();
+            sortTableByPriority();
         });
         actionCell.appendChild(deleteBtn);
     });
@@ -115,7 +116,7 @@ function addRowToTable(rowData) {
     statusContainer.appendChild(statusBadge);
 
     const statusSelect = document.createElement('select');
-    const statusOptions = ['A_faire', 'En_cours', 'Termine'];
+    const statusOptions = ['A_faire', 'En_cours', 'Terminé'];
     statusOptions.forEach(option => {
         const statusOption = document.createElement('option');
         statusOption.textContent = option.replace('_', ' ');
@@ -139,11 +140,12 @@ function addRowToTable(rowData) {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'deleteBtn';
-    deleteBtn.innerHTML = '<img class="delete-icon" src="./img/trash.svg" alt="Supprimer" />'; // Utilisation de l'image SVG pour la suppression avec une classe CSS
+    deleteBtn.innerHTML = '<img class="delete-icon" src="./img/trash.png" alt="Supprimer" />';
     deleteBtn.addEventListener('click', function() {
         const row = this.parentNode.parentNode;
         row.parentNode.removeChild(row);
         saveTableData();
+        sortTableByPriority();
     });
     actionCell.appendChild(deleteBtn);
 
@@ -152,14 +154,17 @@ function addRowToTable(rowData) {
 }
 
 document.getElementById('addRowBtn').addEventListener('click', function() {
-    var nameInput = document.getElementById('nameInput').value;
-    var priorityInput = document.getElementById('priorityInput').value;
+    var nameInput = document.getElementById('nameInput');
+    var priorityInput = document.getElementById('priorityInput');
 
-    if (nameInput && priorityInput) {
+    var nameValue = nameInput.value;
+    var priorityValue = priorityInput.value;
+
+    if (nameValue && priorityValue) {
         const rowData = {
-            name: nameInput,
-            status: 'A_faire', // Statut par défaut lors de l'ajout d'une nouvelle tâche
-            priority: priorityInput
+            name: nameValue,
+            status: 'A_faire',
+            priority: priorityValue
         };
         addRowToTable(rowData);
     }
@@ -174,7 +179,7 @@ function updateStatusBadge(statusBadge, status) {
         case 'En_cours':
             statusBadge.classList.add('status-en-cours');
             break;
-        case 'Termine':
+        case 'Terminé':
             statusBadge.classList.add('status-termine');
             break;
         default:
@@ -229,8 +234,8 @@ document.addEventListener("DOMContentLoaded", function() {
     tableContainer.classList.add("menu-open");
     formContainer.classList.add("menu-open");
 
-    loadTableData(); // Charger les données du tableau au chargement de la page
-    filterTable(); // Appliquer les filtres sur les données chargées
+    loadTableData();
+    filterTable();
 });
 
 function filterTable() {
@@ -258,4 +263,24 @@ function filterTable() {
 document.getElementById('state').addEventListener('change', filterTable);
 document.getElementById('importance').addEventListener('change', filterTable);
 
-// Charger et filtrer les données au chargement de la page
+function sortTableByPriority() {
+    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const rows = Array.from(table.getElementsByTagName('tr'));
+
+    rows.sort((a, b) => {
+        const priorityA = a.getElementsByTagName('td')[2].textContent.trim().toLowerCase();
+        const priorityB = b.getElementsByTagName('td')[2].textContent.trim().toLowerCase();
+
+        const priorityOrder = ['haute', 'moyenne', 'basse'];
+
+        return priorityOrder.indexOf(priorityA) - priorityOrder.indexOf(priorityB);
+    });
+
+    rows.forEach(row => table.appendChild(row));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadTableData();
+    filterTable();
+    sortTableByPriority();
+});
