@@ -29,24 +29,25 @@
     </div>
     <div id="menu" class="menu show">
         <div class="menu_content">
-            
             <div class="filter">
                 <h4 class="more">Filtres:</h4>
                 <label for="state">État:</label>
                 <select id="state" name="state">
-                    <option class="option" value="a_faire">À faire</option>
-                    <option class="option" value="en_cours">En cours</option>
-                    <option class="option" value="termine">Terminé</option>
+                    <option class="option" value="none">Tout les états</option>
+                    <option class="option" value="A_faire">À faire</option>
+                    <option class="option" value="En_cours">En cours</option>
+                    <option class="option" value="Terminé">Terminé</option>
                 </select>
-
+            
                 <label for="importance">Importance:</label>
                 <select id="importance" name="importance">
+                    <option class="option" value="none">Toute les importances</option>
                     <option class="option" value="basse">Basse</option>
                     <option class="option" value="moyenne">Moyenne</option>
                     <option class="option" value="haute">Haute</option>
                 </select>
             </div>
-            <h4 class="more"></h4>Recherche:</h4>
+            <h4 class="more">Recherche:</h4>
             <div class="search">
                 <input type="text" id="searchInput" placeholder="Rechercher...">
                 <button id="searchBtn">Rechercher</button>
@@ -62,9 +63,7 @@
             <button id="addRowBtn">Ajouter une tache</button>
         </div>
     </div>
-</div>
     <button id="toggleMenuBtn" class="toggle_menu_btn" onclick="toggleMenu()"><img src="./img/arrow.svg" class="arrow"></button>
-    </div>
     <div class="table-container menu-open" id="tableContainer">
         <table id="dataTable">
             <thead>
